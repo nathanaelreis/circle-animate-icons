@@ -1,43 +1,60 @@
+/* Importando as fontes do Google Fonts Raleway e Source Code Pro com diferentes pesos. */
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&family=Source+Code+Pro:wght@200;300;400;500;600;700;800;900&display=swap");
 
+/* Estilos para o elemento com a classe "circle" que contém os ícones animados. */
 .circle {
+  /* Posicionamento relativo para ajustar a posição dos ícones. */
   position: relative;
   top: 400px;
   left: 700px;
+  /* Definindo as dimensões do contêiner da animação. */
   width: 100px;
   height: 100px;
+  /* Preservando o estilo 3D para animação. */
   transform-style: preserve-3d;
-  animation: animateCircle 40s linear infinite;
+  /* Definindo a animação para o contêiner, com duração de 4 segundos, linear e infinita. */
+  animation: animateCircle 4s linear infinite alternate;
+  /* A propriedade "animation-iteration-count" alterada para "infinite alternate" faz o círculo balançar para frente e para trás. */
 }
 
+/* Definindo a animação "animateCircle" com dois keyframes. */
 @keyframes animateCircle {
+  /* Keyframe inicial com a perspectiva, rotações e translação para animar o círculo. */
   0% {
-    transform: perspective(1000px) rotateY(0deg) rotateX(15deg)
-      translateY(-30px);
+    transform: perspective(1000px) rotateY(0deg) rotateX(15deg) translateY(-30px);
   }
+  /* Keyframe final com as mesmas características, mas com um pequeno ângulo de rotação no eixo Z para o efeito de balanço. */
   100% {
-    transform: perspective(1000px) rotateY(360deg) rotateX(15deg)
-      translateY(-30px);
+    transform: perspective(1000px) rotateY(360deg) rotateX(15deg) translateY(-30px) rotateZ(5deg);
   }
 }
 
+/* Estilos para cada ícone representado por um elemento "span" dentro do elemento com a classe "circle". */
 .circle span {
+  /* Posicionamento absoluto para alinhar os ícones dentro do círculo. */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* Fundo semi-transparente para os ícones. */
   background-color: #2d2e3227;
+  /* Sombra para dar profundidade ao círculo. */
   box-shadow: 0px 0px 5px #00000080;
+  /* Definindo o formato do círculo usando um raio igual à metade do tamanho do elemento. */
   border-radius: 50%;
-  transform-origin: center;
+  /* Preservando o estilo 3D para animação. */
   transform-style: preserve-3d;
+  /* Definindo a posição tridimensional dos ícones com base na variável CSS "--i". */
   transform: rotateY(calc(var(--i) * calc(360deg / 6))) translateZ(300px);
 }
 
+/* Estilos para a imagem dentro de cada "span" que representa o ícone. */
 .circle span img {
+  /* Posicionamento relativo para ajustar a posição da imagem dentro do círculo. */
   position: relative;
   top: 12px;
   left: 12px;
+  /* Definindo o modo de ajuste da imagem para cobrir o espaço do "span". */
   object-fit: cover;
 }
